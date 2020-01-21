@@ -28,7 +28,16 @@ class NODM_Flipbox extends ET_Builder_Module {
 	}
 
 	public function render( $attrs, $content = null, $render_slug ) {
-		return sprintf( '<p>Hi I am a Flipbox</p>');
+		return sprintf( '<div class="flip-box">
+  <div class="flip-box-inner">
+    <div class="flip-box-front">
+      <h2>Front Side</h2>
+    </div>
+    <div class="flip-box-back">
+      <h2>Back Side</h2>
+    </div>
+  </div>
+</div>');
 		// return sprintf( '<h1>%1$s</h1>', $this->props['content'] );
 	}
 }

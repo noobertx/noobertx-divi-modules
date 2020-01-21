@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // Internal Dependencies
-import './style.css';
+import './flipbox.css';
 
 
 class Flipbox extends Component {
