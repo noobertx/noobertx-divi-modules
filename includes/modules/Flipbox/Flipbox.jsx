@@ -11,11 +11,29 @@ class Flipbox extends Component {
 
   render() {
     const Content = this.props.content;
+    const FrontContent = this.props.frontcontent;
+    const BackContent = this.props.backcontent;
+
+    console.log(this.props);
+    console.log(Content);
+
+    // return (
+    //   <h1>
+    //     <Content/>
+    //   </h1> 
+    // );
 
     return (
-      <h1>
-        <Content/>
-      </h1>
+      <div class="flip-box">
+			  <div class="flip-box-inner">
+			    <div class="flip-box-front">
+			      FrontContent
+			    </div>
+			    <div class="flip-box-back">
+			   	  BackContent
+			    </div>
+			  </div>
+			</div>
     );
   }
 }
