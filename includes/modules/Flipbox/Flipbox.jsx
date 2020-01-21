@@ -12,13 +12,16 @@ class Flipbox extends Component {
   render() {
     const FrontContent = this.props['front-content'];
     const BackContent = this.props['back-content'];
-
     return (
       <div class="flip-box">
 			  <div class="flip-box-inner">
-			    <div class="flip-box-front" dangerouslySetInnerHTML={{__html: FrontContent}}>			      
+          <div  class="flip-box-front" 
+                dangerouslySetInnerHTML={{__html: FrontContent}} 
+                style={{background: this.props['frontview_background_color']}}>			      
 			    </div>
-			    <div class="flip-box-back" dangerouslySetInnerHTML={{__html: BackContent}}>			   	  
+          <div  class="flip-box-back" 
+                dangerouslySetInnerHTML={{__html: BackContent}}
+                style={{background: this.props['backview_background_color']}}>			   	  
 			    </div>
 			  </div>
 			</div>

@@ -72,19 +72,24 @@ class NODM_Flipbox extends ET_Builder_Module {
 		);
 	}
 	function render( $attrs, $content = null, $render_slug ) {
-		$frontview_background_color =   $this->props['frontview_background_color'];
-		$module_class = $this->shortcode_atts['module_class'];
 		
 		
 		self::set_style( $render_slug, array(
-							'selector'    => "%%order_class%%  .flip-box-front",
-							'declaration' => sprintf(
-								'background: %1$s;',
-								esc_html($frontview_background_color)
-							),
-						) );
+			'selector'    => "%%order_class%%  .flip-box-front",
+			'declaration' => sprintf(
+				'background: %1$s;',
+				esc_html( $this->props['frontview_background_color'])
+			),
+		) );
+		self::set_style( $render_slug, array(
+			'selector'    => "%%order_class%%  .flip-box-back",
+			'declaration' => sprintf(
+				'background: %1$s;',
+				esc_html( $this->props['backview_background_color'])
+			),
+		) );
 			
-				do_action('nodm_render_style');
+		do_action('nodm_render_style');
 						
 		return sprintf( 
 			'<div class="flip-box">
