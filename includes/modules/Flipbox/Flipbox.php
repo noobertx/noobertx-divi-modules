@@ -13,7 +13,21 @@ class NODM_Flipbox extends ET_Builder_Module {
 
 	public function init() {
 		$this->name = esc_html__( 'Flipbox', 'nodm-noobertx-divi-modules' );
-
+		$this->whitelisted_fields = array('frontview_background_color','module_class');
+		$this->main_css_element = '%%order_class%% .flip-box';
+		$this->fb_support       = true;
+		$this->advanced_fields = array(
+			'frontview_background_color' => array(
+				'css' => array(
+					'important' => array( 'custom_margin' ),
+				),
+			),
+			'background'            => array(
+				'settings' => array(
+					'color' => 'alpha',
+				),
+			),
+		);
 	
 	}
 
@@ -35,48 +49,59 @@ class NODM_Flipbox extends ET_Builder_Module {
 			),
 			'frontview_background_color' => array(
 				'label'             => esc_html__( 'Front View Background Color', 'et_builder' ),
-				'type'              => 'color-alpha',
-				'css'     => array(
-					'main' => "{$this->main_css_element}, {$this->main_css_element}.flip-box-front",
-				),
+				'type'              => 'color',
 				'option_category'        => 'basic_option',
 				'description'       => esc_html__( 'Here you can define a custom color for the frontview of the flipcard.', 'et_builder' ),
+				'toggle_slug'     => 'main_content',
 			),
 			'backview_background_color' => array(
 				'label'             => esc_html__( 'Back View Background Color', 'et_builder' ),
-				'type'              => 'color-alpha',
+				'type'              => 'color',
 				'option_category'        => 'basic_option',
 				'description'       => esc_html__( 'Here you can define a custom color for the backview of the flipcard.', 'et_builder' ),
-			),	
+				'toggle_slug'     => 'main_content',
+			),
+			'module_class' => array(
+ 				'label' => esc_html__( 'CSS Class', 'et_builder' ),
+ 				'type' => 'text',
+ 				'option_category' => 'configuration',
+ 				'tab_slug' => 'custom_css',
+ 				'option_class' => 'et_pb_custom_css_regular',
+ 			),	
 			
 		);
 	}
-
-	public function render( $attrs, $content = null, $render_slug ) {
-		$frontview_background_color                = $this->props['frontview_background_color'];
-
-		ET_Builder_Module::set_style( ".".$render_slug, array(
-					'selector'    => '.flip-box-front',
-					'declaration' => sprintf(
-						'background-color: %1$s;',
-						 $frontview_background_color 
-					),
-				) );
+	function render( $attrs, $content = null, $render_slug ) {
+		$frontview_background_color =   $this->props['frontview_background_color'];
+		$module_class = $this->shortcode_atts['module_class'];
+		
+		
+		self::set_style( $render_slug, array(
+							'selector'    => "%%order_class%%  .flip-box-front",
+							'declaration' => sprintf(
+								'background: %1$s;',
+								esc_html($frontview_background_color)
+							),
+						) );
+			
+				do_action('nodm_render_style');
+						
 		return sprintf( 
 			'<div class="flip-box">
 			  <div class="flip-box-inner">
 			    <div class="flip-box-front">
 				  %1$s
-				  <br>
-					%3$s
 			    </div>
 			    <div class="flip-box-back">
 			   	  %2$s
 			    </div>
 			  </div>
-			</div>', $this->props['front-content'], $this->props['back-content'],json_encode($render_slug));
+			</div>', $this->props['front-content'], $this->props['back-content']);
 		// return sprintf( '<h1>%1$s</h1>', $this->props['content'] );
 	}
+
 }
 
 new NODM_Flipbox;
+
+

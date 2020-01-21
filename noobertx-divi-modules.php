@@ -36,4 +36,45 @@ function nodm_initialize_extension() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/NoobertxDiviModules.php';
 }
 add_action( 'divi_extensions_init', 'nodm_initialize_extension' );
+
+
+
 endif;
+
+
+// function Hello(){
+// 	echo "Heloooooooo";
+// }
+
+
+
+// function Prep_Dlipbox_Module(){
+//  global $pagenow;
+
+// $is_admin = is_admin();
+//  $action_hook = $is_admin ? 'wp_loaded' : 'wp';
+//  $required_admin_pages = array( 'edit.php', 'post.php', 'post-new.php', 'admin.php', 'customize.php', 'edit-tags.php', 'admin-ajax.php', 'export.php' ); // list of admin pages where we need to load builder files
+//  $specific_filter_pages = array( 'edit.php', 'admin.php', 'edit-tags.php' );
+//  $is_edit_library_page = 'edit.php' === $pagenow && isset( $_GET['post_type'] ) && 'et_pb_layout' === $_GET['post_type'];
+//  $is_role_editor_page = 'admin.php' === $pagenow && isset( $_GET['page'] ) && 'et_divi_role_editor' === $_GET['page'];
+//  $is_import_page = 'admin.php' === $pagenow && isset( $_GET['import'] ) && 'wordpress' === $_GET['import']; 
+//  $is_edit_layout_category_page = 'edit-tags.php' === $pagenow && isset( $_GET['taxonomy'] ) && 'layout_category' === $_GET['taxonomy'];
+
+// if ( ! $is_admin || ( $is_admin && in_array( $pagenow, $required_admin_pages ) && ( ! in_array( $pagenow, $specific_filter_pages ) || $is_edit_library_page || $is_role_editor_page || $is_edit_layout_category_page || $is_import_page ) ) ) {
+//  add_action($action_hook, 'hook_css', 9789);
+// //  add_action($action_hook, 'DS_Flipbox_Module', 9789);
+//  }
+// }
+// Prep_Dlipbox_Module();
+
+
+// add_action('wp ','hook_css',9789);
+function nodm_render_css(){
+	?>
+	          <style id="will-printe-after">
+	           	<?php echo ET_Builder_Element::get_style();?>
+	        </style>
+	    <?php
+}
+
+add_action('nodm_render_style','nodm_render_css');
