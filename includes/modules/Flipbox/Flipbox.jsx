@@ -10,27 +10,15 @@ class Flipbox extends Component {
   static slug = 'nodm_flipbox';
 
   render() {
-    const Content = this.props.content;
-    const FrontContent = this.props.frontcontent;
-    const BackContent = this.props.backcontent;
-
-    console.log(this.props);
-    console.log(Content);
-
-    // return (
-    //   <h1>
-    //     <Content/>
-    //   </h1> 
-    // );
+    const FrontContent = this.props['front-content'];
+    const BackContent = this.props['back-content'];
 
     return (
       <div class="flip-box">
 			  <div class="flip-box-inner">
-			    <div class="flip-box-front">
-			      FrontContent
+			    <div class="flip-box-front" dangerouslySetInnerHTML={{__html: FrontContent}}>			      
 			    </div>
-			    <div class="flip-box-back">
-			   	  BackContent
+			    <div class="flip-box-back" dangerouslySetInnerHTML={{__html: BackContent}}>			   	  
 			    </div>
 			  </div>
 			</div>
