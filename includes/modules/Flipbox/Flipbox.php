@@ -55,6 +55,7 @@ class NODM_Flipbox extends ET_Builder_Module {
 					'horizontal'  => esc_html__( 'Horizontal', 'et_builder' ),
 					'vertical' => esc_html__( 'Vertical', 'et_builder' ),
 				),
+				'tab_slug'        => 'Flipbox',
 				'toggle_slug'      => 'main_content',
 				'description'      => esc_html__( 'Here you can choose flip direction', 'et_builder' )
 			),
