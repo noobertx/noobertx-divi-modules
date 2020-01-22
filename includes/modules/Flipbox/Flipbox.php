@@ -16,21 +16,18 @@ class NODM_Flipbox extends ET_Builder_Module {
 		$this->whitelisted_fields = array('frontview_background_color','module_class');
 		$this->main_css_element = '%%order_class%% .flip-box';
 		$this->fb_support       = true;
-		$this->advanced_fields = array(
-			'frontview_background_color' => array(
+		$this->advanced_fields = array();	
+	}
+	public function get_advanced_fields_config() {
+		return array(
+			'margin_padding' => array(
 				'css' => array(
-					'important' => array( 'custom_margin' ),
-				),
-			),
-			'background'            => array(
-				'settings' => array(
-					'color' => 'alpha',
+					'main' => $this->main_css_element ." .flip-box-front,". $this->main_css_element ." .flip-box-back",
+					'important' => 'all',
 				),
 			),
 		);
-	
 	}
-
 	public function get_fields() {
 		return array(
 			'front-content' => array(
@@ -61,14 +58,14 @@ class NODM_Flipbox extends ET_Builder_Module {
 			),
 			'frontview_background_color' => array(
 				'label'             => esc_html__( 'Front View Background Color', 'et_builder' ),
-				'type'              => 'color',
+				'type'              => 'color-alpha',
 				'option_category'        => 'basic_option',
 				'description'       => esc_html__( 'Here you can define a custom color for the frontview of the flipcard.', 'et_builder' ),
 				'toggle_slug'     => 'main_content',
 			),
 			'backview_background_color' => array(
 				'label'             => esc_html__( 'Back View Background Color', 'et_builder' ),
-				'type'              => 'color',
+				'type'              => 'color-alpha',
 				'option_category'        => 'basic_option',
 				'description'       => esc_html__( 'Here you can define a custom color for the backview of the flipcard.', 'et_builder' ),
 				'toggle_slug'     => 'main_content',
