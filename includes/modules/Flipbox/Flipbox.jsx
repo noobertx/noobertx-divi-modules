@@ -12,8 +12,9 @@ class Flipbox extends Component {
   render() {
     const FrontContent = this.props['front-content'];
     const BackContent = this.props['back-content'];
+    const flipDirection = (this.props['flip_direction']==="vertical") ? "flip-vertical":" ";
     return (
-      <div class="flip-box">
+      <div className={'flip-box '+flipDirection}>
 			  <div class="flip-box-inner">
           <div  class="flip-box-front" 
                 dangerouslySetInnerHTML={{__html: FrontContent}} 

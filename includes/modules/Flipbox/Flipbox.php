@@ -47,6 +47,17 @@ class NODM_Flipbox extends ET_Builder_Module {
 				'description'     => esc_html__( 'Content entered here will appear inside the module.', 'nodm-noobertx-divi-modules' ),
 				'toggle_slug'     => 'main_content',
 			),
+			'flip_direction' => array(
+				'label'            => esc_html__( 'Flip Direction', 'et_builder' ),
+				'type'             => 'select',
+				'option_category'  => 'configuration',
+				'options'          => array(
+					'horizontal'  => esc_html__( 'Horizontal', 'et_builder' ),
+					'vertical' => esc_html__( 'Vertical', 'et_builder' ),
+				),
+				'toggle_slug'      => 'main_content',
+				'description'      => esc_html__( 'Here you can choose flip direction', 'et_builder' )
+			),
 			'frontview_background_color' => array(
 				'label'             => esc_html__( 'Front View Background Color', 'et_builder' ),
 				'type'              => 'color',
@@ -88,18 +99,21 @@ class NODM_Flipbox extends ET_Builder_Module {
 				esc_html( $this->props['backview_background_color'])
 			),
 		) );
+
+		$flip_direction = ($this->props['flip_direction']=="vertical") ? "flip-".$this->props['flip_direction'] : "";
 						
 		return sprintf( 
-			'<div class="flip-box">
+			'<div class="flip-box  %3$s">
 			  <div class="flip-box-inner">
 			    <div class="flip-box-front">
 				  %1$s
+				 
 			    </div>
 			    <div class="flip-box-back">
-			   	  %2$s
+					 %2$s
 			    </div>
 			  </div>
-			</div>', $this->props['front-content'], $this->props['back-content']);
+			</div>', $this->props['front-content'], $this->props['back-content'],$flip_direction);
 	}
 
 }
