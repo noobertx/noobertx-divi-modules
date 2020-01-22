@@ -88,8 +88,6 @@ class NODM_Flipbox extends ET_Builder_Module {
 				esc_html( $this->props['backview_background_color'])
 			),
 		) );
-			
-		do_action('nodm_render_style');
 						
 		return sprintf( 
 			'<div class="flip-box">
@@ -102,7 +100,6 @@ class NODM_Flipbox extends ET_Builder_Module {
 			    </div>
 			  </div>
 			</div>', $this->props['front-content'], $this->props['back-content']);
-		// return sprintf( '<h1>%1$s</h1>', $this->props['content'] );
 	}
 
 }

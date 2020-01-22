@@ -48,4 +48,5 @@ function nodm_render_css(){
 	    <?php
 }
 
-add_action('nodm_render_style','nodm_render_css');
+
+add_action( 'wp_footer','nodm_render_css', 19 );
