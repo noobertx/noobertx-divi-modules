@@ -26,6 +26,13 @@ class NODM_Flipbox extends ET_Builder_Module {
 					'important' => 'all',
 				),
 			),
+			'background' => false,
+			'borders' => false,
+			'box_shadow' => false,
+			'button' => false,
+			'filters' => false,
+			'fonts' => false,
+			'max_width' => false,
 		);
 	}
 	public function get_fields() {
