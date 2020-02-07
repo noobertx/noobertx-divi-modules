@@ -60,4 +60,23 @@
         })
     })
 
+
+     $(".nodm-animated-text.effect-4").each(function (el) {
+         var textWrapper = $(this).find(".ml1")[0]
+         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+         var loop = JSON.parse($(this).data("loop"));
+         var duration = parseInt($(this).data("duration"));
+
+         anime.timeline({
+                 loop: loop
+             })
+             .add({
+                 targets: '.effect-4 .ml1 .letter',
+                 translateY: ["1.1em", 0],
+                 translateZ: 0,
+                 duration: duration,
+                 delay: (el, i) => 50 * i
+             })
+     })
+
 })(jQuery)

@@ -50,3 +50,24 @@
     font-weight: 900;
     font-size: 3.5em;
 }
+
+/*! Effect 4 */
+.nodm-animated-text.effect-4 .ml1 {
+    position: relative;
+    font-weight: 900;
+    font-size: 3.3em;
+}
+
+.nodm-animated-text.effect-4 .ml1 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+}
+
+.nodm-animated-text.effect-4 .ml1 .letter {
+    display: inline-block;
+    line-height: 1em;
+}
