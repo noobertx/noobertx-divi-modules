@@ -62,7 +62,7 @@ class NODM_AnimatedText extends ET_Builder_Module {
 				'description'      => esc_html__( '', 'et_builder' )
 			),
 			'enable_loop' => array(
-				'label'            => esc_html__( 'Effect', 'et_builder' ),
+				'label'            => esc_html__( 'Animation is Looping', 'et_builder' ),
 				'type'             => 'select',
 				'option_category'  => 'basic_option',
 				'options'          => array(
@@ -70,6 +70,14 @@ class NODM_AnimatedText extends ET_Builder_Module {
 					'false'  => esc_html__( 'False', 'et_builder' ),
 				),
 				'default'		   => 'true',
+				'toggle_slug'      => 'main_content',
+				'description'      => esc_html__( '', 'et_builder' )
+			),
+			'duration' => array(
+				'label'            => esc_html__( 'Duration', 'et_builder' ),
+				'type'             => 'number',
+				'option_category'  => 'basic_option',
+				'default'		   => '1000',
 				'toggle_slug'      => 'main_content',
 				'description'      => esc_html__( '', 'et_builder' )
 			),
@@ -90,12 +98,13 @@ class NODM_AnimatedText extends ET_Builder_Module {
 		$effect = $this->props['effect'];
 		$content = $this->props['content'];
 		$enable_loop = $this->props['enable_loop'];
+		$duration = $this->props['duration'];
 
 		$new_content = '<h1 class="ml1 text-center"><span class="text-wrapper"><span class="line line1"></span><span class="letters">THURSDAY</span><span class="line line2"></span></span></h1>';
 		return sprintf( 
-			'<div class="nodm-animated-text %2$s" data-loop="%3$s">
+			'<div class="nodm-animated-text %2$s" data-loop="%3$s" data-duration="%4$s">
 				%1$s
-			</div>',$content,$effect,$enable_loop);
+			</div>',$content,$effect,$enable_loop,$duration);
 	}
 
 }
