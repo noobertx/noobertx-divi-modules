@@ -61,6 +61,18 @@ class NODM_AnimatedText extends ET_Builder_Module {
 				'toggle_slug'      => 'main_content',
 				'description'      => esc_html__( '', 'et_builder' )
 			),
+			'enable_loop' => array(
+				'label'            => esc_html__( 'Effect', 'et_builder' ),
+				'type'             => 'select',
+				'option_category'  => 'basic_option',
+				'options'          => array(
+					'true'  => esc_html__( 'True', 'et_builder' ),
+					'false'  => esc_html__( 'False', 'et_builder' ),
+				),
+				'default'		   => 'true',
+				'toggle_slug'      => 'main_content',
+				'description'      => esc_html__( '', 'et_builder' )
+			),
 			'content' => array(
 				'label'           => esc_html__( 'Content', 'nodm-noobertx-divi-modules' ),
 				'type'            => 'tiny_mce',
@@ -77,12 +89,13 @@ class NODM_AnimatedText extends ET_Builder_Module {
 		$this->enqueue_shortcode_scripts();
 		$effect = $this->props['effect'];
 		$content = $this->props['content'];
+		$enable_loop = $this->props['enable_loop'];
 
 		$new_content = '<h1 class="ml1 text-center"><span class="text-wrapper"><span class="line line1"></span><span class="letters">THURSDAY</span><span class="line line2"></span></span></h1>';
 		return sprintf( 
-			'<div class="nodm-animated-text %2$s">
+			'<div class="nodm-animated-text %2$s" data-loop="%3$s">
 				%1$s
-			</div>',$content,$effect);
+			</div>',$content,$effect,$enable_loop);
 	}
 
 }
