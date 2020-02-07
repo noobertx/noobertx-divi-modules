@@ -1,6 +1,5 @@
 // External Dependencies
 import React, { Component } from 'react';
-import anime from 'animejs/lib/anime.es.js';
 // Internal Dependencies
 import './animated-text.css';
 
@@ -8,43 +7,11 @@ import './animated-text.css';
 class AnimatedText extends Component {
 
   static slug = 'nodm_animated_text';
-  renderAnime(){
-    var textWrapper = document.querySelector('.ml1 .letters');
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-    anime.timeline({
-        loop: true
-      })
-      .add({
-        targets: '.ml1 .letter',
-        scale: [0.3, 1],
-        opacity: [0, 1],
-        translateZ: 0,
-        easing: "easeOutExpo",
-        duration: 600,
-        delay: (el, i) => 70 * (i + 1)
-      }).add({
-        targets: '.ml1 .line',
-        scaleX: [0, 1],
-        opacity: [0.5, 1],
-        easing: "easeOutExpo",
-        duration: 700,
-        offset: '-=875',
-        delay: (el, i, l) => 80 * (l - i)
-      }).add({
-        targets: '.ml1',
-        opacity: 0,
-        duration: 1000,
-        easing: "easeOutExpo",
-        delay: 1000
-      });
-  }
+  
   render() {
-    this->renderAnime();
+  
     return (
-      <div className={'flip-box '+flipDirection}>
-        <h1>Animated Text Here</h1>
-			</div>
+     <div id="mpc_animated_text-965e3b4b96c8a1a" class="mpc-animated-text-wrap mpc-typography--default mpc-transition mpc-style--rotator mpc-loaded mpc-inited" data-options="" style="opacity: 1;"><div class="mpc-animated-text__side mpc-animated-text__before mpc-typography--default">This is a default animated text:</div><div class="mpc-animated-text" style="height: 37px;"><div class="mpc-animated-text__block" style=""><span class="mpc-animated-text__word">Second line.</span></div><div class="mpc-animated-text__block" style=""><span class="mpc-animated-text__word">Third line.</span></div><div class="mpc-animated-text__block" style=""><span class="mpc-animated-text__word">First line.</span></div></div></div>
     );
     
   }

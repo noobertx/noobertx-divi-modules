@@ -38,20 +38,25 @@ class NODM_AnimatedText extends ET_Builder_Module {
 			
 		);
 	}
+	function enqueue_shortcode_scripts(){
+		wp_enqueue_script( 'mpc_animated_text-js',  NODM_URI  . '/includes/modules/AnimatedText/animated-text.js', array( 'jquery' ), '1');
+	}
 	function render( $attrs, $content = null, $render_slug ) {
-		
-		$content = '<h1 class="ml1">
+		$this->enqueue_shortcode_scripts();
+		$content = '
+<div id="mpc_animated_text-965e3b4b96c8a1a" class="mpc-animated-text-wrap mpc-typography--default mpc-transition mpc-style--rotator mpc-loaded mpc-inited" data-options="{\'style\':\'rotator\',\'duration\':\'550\',\'delay\':\'1200\',\'loop\':true,\'dynamic\':false}" style="opacity: 1;"><div class="mpc-animated-text__side mpc-animated-text__before mpc-typography--default">This is a default animated text:</div><div class="mpc-animated-text" style="height: 37px;"><div class="mpc-animated-text__block" style=""><span class="mpc-animated-text__word">Second line.</span></div><div class="mpc-animated-text__block" style=""><span class="mpc-animated-text__word">Third line.</span></div><div class="mpc-animated-text__block" style=""><span class="mpc-animated-text__word">First line.</span></div></div></div>
+';
+		$new_content = '<h1 class="ml1">
   <span class="text-wrapper">
     <span class="line line1"></span>
     <span class="letters">THURSDAY</span>
     <span class="line line2"></span>
   </span>
-</h1>
-';
+</h1>';
 		return sprintf( 
 			'<div class="nodm-animated-text">
 				%1$s
-			</div>',$content);
+			</div>',$new_content);
 	}
 
 }

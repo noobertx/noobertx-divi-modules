@@ -25,6 +25,9 @@ You should have received a copy of the GNU General Public License
 along with Noobertx Divi Modules. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
+define( 'NODM_FILE', __FILE__ );
+define( 'NODM_URI', plugin_dir_url( __FILE__ ) );
+define( 'NODM_ASSETS', NODM_URI."assets" );
 
 if ( ! function_exists( 'nodm_initialize_extension' ) ):
 /**
@@ -50,3 +53,9 @@ function nodm_render_css(){
 
 
 add_action( 'wp_footer','nodm_render_css', 19 );
+
+
+function nodm_widget_enqueue_script() {   
+	wp_enqueue_script( 'anime-script', 'https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js', array() ,"1.0", true );
+}
+add_action('wp_enqueue_scripts', 'nodm_widget_enqueue_script');
