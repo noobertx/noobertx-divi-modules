@@ -9,17 +9,11 @@ class AnimatedText extends Component {
   static slug = 'nodm_animated_text';
   
   render() {
-  
-    return (<div class="nodm-animated-text effect-1">					
-					<h1 class="ml1 text-center">
-  						<span class="text-wrapper">
-    						<span class="line line1"></span>
-    						<span class="letters">THURSDAY</span>
-    						<span class="line line2"></span>
-  						</span>
-					</h1>
-				</div>);
-    
+    const content = this.props['content'];
+    const effect = this.props['effect']; 
+    return (
+      <div className={'nodm-animated-text '+effect}> {content()}</div>
+      );
   }
 }
 
